@@ -1,6 +1,6 @@
 extends Node2D
 
-var singleBlock = preload("res://Piece/Piece.tscn")
+var singleBlock = preload("res://Piece/Block/Block.tscn")
 var points = []
 var rendered_pieces = []
 

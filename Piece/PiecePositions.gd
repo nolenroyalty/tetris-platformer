@@ -1,6 +1,6 @@
 extends Node
 
-enum SHAPES {_skip, I, O, L, J, T, S, Z}
+enum SHAPES {I, O, L, J, T, S, Z}
 
 const I_POSITIONS = [
 	[[0 , 0], [0 , 1], [0, 2], [0, 3]], # Up 
@@ -42,7 +42,7 @@ const Z_POSITIONS = [
 	[[0, 0], [1, 0], [1, -1], [0, 1]] # Vertical
 ]
 
-func positions_for_shape(s):
+static func positions_for_shape(s):
 	match s:
 		SHAPES.I: return I_POSITIONS
 		SHAPES.O: return O_POSITIONS
@@ -52,7 +52,7 @@ func positions_for_shape(s):
 		SHAPES.S: return S_POSITIONS
 		SHAPES.Z: return Z_POSITIONS
 
-func color_for_shape(s):
+static func color_for_shape(s):
 	match s:
 		SHAPES.I: return Constants.COLOR.LIGHTBLUE
 		SHAPES.O: return Constants.COLOR.YELLOW
@@ -62,7 +62,7 @@ func color_for_shape(s):
 		SHAPES.S: return Constants.COLOR.RED
 		SHAPES.Z: return Constants.COLOR.GREEN
 
-func most_horizontal_orientation(shape):
+static func most_horizontal_orientation(shape):
 	match shape:
 		SHAPES.I: return 3
 		SHAPES.O: return 0

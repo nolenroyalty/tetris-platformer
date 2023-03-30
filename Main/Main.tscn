@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Board/Board.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Board/Landscape.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Main/Main.gd" type="Script" id=3]
+
+[node name="Main" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="Board" parent="." instance=ExtResource( 1 )]
+position = Vector2( 0, -32 )
+
+[node name="Landscape" parent="." instance=ExtResource( 2 )]
+position = Vector2( 32, 0 )
+z_index = 1
+
+[node name="TickdownTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="InputTimer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[node name="LevelIncreaseTimer" type="Timer" parent="."]
+wait_time = 25.0
+autostart = true
+
+[connection signal="timeout" from="TickdownTimer" to="." method="_on_TickdownTimer_timeout"]
