@@ -80,5 +80,5 @@ text = "Level:"
 margin_right = 40.0
 margin_bottom = 14.0
 custom_fonts/font = SubResource( 4 )
-text = "0"
+text = "1"
 align = 2

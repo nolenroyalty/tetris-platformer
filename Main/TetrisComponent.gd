@@ -5,11 +5,11 @@ signal held_piece(piece)
 signal dropped
 signal placed
 signal rows_cleared(count)
-signal lost_game
+signal lost_tetris_game
 signal levelup(level)
 
 const START_X = Constants.BOARD_WIDTH / 2
-const START_Y = -1
+const START_Y = 0
 const TICKDOWN_TIMER_START = 1.1
 
 var tetrisPiece = preload("res://Piece/Piece.tscn")
@@ -17,7 +17,6 @@ onready var landscape = $Landscape
 onready var input_timer = $InputTimer
 onready var tickdown_timer = $TickdownTimer
 onready var bottom_display = $BottomDisplay
-onready var shake_camera = $ShakeCamera
 
 var tickdown_timer_amount = TICKDOWN_TIMER_START 
 var current_piece
@@ -44,12 +43,7 @@ func set_piece_position(x, y):
 func calculate_absolute_positions(x, y, relative_positions):
 	var absolute_positions = []
 	for pos in relative_positions:
-		var x_pos = pos[0] + x
-		# We need to subtract one here to account for the left border
-		# alternatively we could (and maybe we should) just keep this logic within a separate
-		# component that's already been right-shifted 32 pixels
-		x_pos -= 1
-		absolute_positions.append([x_pos, pos[1] + y])
+		absolute_positions.append([pos[0] + x, pos[1] + y])
 	return absolute_positions
 
 func choose_next_piece():
@@ -66,10 +60,8 @@ func spawn_current_piece():
 	add_child(current_piece)
 	set_piece_position(START_X, START_Y)
 	if not verify_proposed_coordinates(START_X, START_Y, current_piece.current_positions()):
-		emit_signal("lost_game")
-		# This may not be appropriate as we add more game?
-		get_tree().paused = true
-		$YouLoseNode/YouLose.visible = true
+		# TODO maybe we should hide the piece here?
+		emit_signal("lost_tetris_game")
 	choose_next_piece()
 
 # Called when the node enters the scene tree for the first time.
@@ -92,7 +84,8 @@ func verify_proposed_coordinates(proposed_x, proposed_y, positions):
 		if y < 0:
 			# Outside the landscape but legal
 			pass
-		elif landscape.is_occupied(x, y): return false
+		elif landscape.is_occupied(x, y):
+			return false
 	return true
 
 func maybe_clear_rows(rows_to_clear):
@@ -102,7 +95,6 @@ func maybe_clear_rows(rows_to_clear):
 		var number_cleared = len(rows_to_clear)
 		emit_signal("rows_cleared", number_cleared)
 		bottom_display.increment_score(number_cleared)
-		shake_camera.rows_cleared_shake(number_cleared)
 	
 func add_to_landscape():
 	var absolute_positions = calculate_absolute_positions(current_x, current_y, current_piece.current_positions())
@@ -110,7 +102,6 @@ func add_to_landscape():
 	maybe_clear_rows(rows_to_clear)
 	landscape.render_landscape()
 	emit_signal("placed")
-	shake_camera.place_shake()
 
 func handle_tickdown():
 	var proposed_y = current_y + 1
@@ -133,7 +124,6 @@ func perform_drop():
 	add_to_landscape()
 	spawn_current_piece()
 	emit_signal("dropped")
-	shake_camera.drop_shake()
 	
 func perform_hold():
 	if held_piece == null:
