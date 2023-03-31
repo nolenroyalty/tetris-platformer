@@ -29,3 +29,6 @@ func display_piece(to_display):
 	
 	displayed_piece.position = Vector2(xpos, ypos)
 	add_child(displayed_piece)
+
+func set_text(text):
+	$Label.text = text

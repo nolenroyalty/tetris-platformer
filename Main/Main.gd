@@ -8,7 +8,7 @@ signal rows_cleared(count)
 signal lost_game
 signal levelup(level)
 
-const START_X = Constants.BOARD_WIDTH / 2 - 1
+const START_X = Constants.BOARD_WIDTH / 2
 const START_Y = -1
 const TICKDOWN_TIMER_START = 1.1
 
@@ -16,6 +16,8 @@ var tetrisPiece = preload("res://Piece/Piece.tscn")
 onready var landscape = $Landscape
 onready var input_timer = $InputTimer
 onready var tickdown_timer = $TickdownTimer
+onready var bottom_display = $BottomDisplay
+onready var shake_camera = $ShakeCamera
 
 var tickdown_timer_amount = TICKDOWN_TIMER_START 
 var current_piece
@@ -25,11 +27,14 @@ var current_x
 var current_y
 var ghost
 
-func decrement_tickdown_timer():
+func level_up():
 	# It might be nice if we increased how long it took to level up every time we decremented this
 	if tickdown_timer_amount > 0.2:
 		tickdown_timer_amount -= 0.1
-		emit_signal("levelup", 1 + int((TICKDOWN_TIMER_START - tickdown_timer_amount) * 10))
+		var new_level = 1 + int((TICKDOWN_TIMER_START - tickdown_timer_amount) * 10)
+		emit_signal("levelup", new_level)
+		bottom_display.set_level(new_level)
+	
 
 func set_piece_position(x, y):
 	current_piece.position = Vector2(x * Constants.PIECE_SIZE, y * Constants.PIECE_SIZE)
@@ -51,6 +56,7 @@ func choose_next_piece():
 	next_piece = tetrisPiece.instance()
 	next_piece.init(false)
 	emit_signal("chose_next_piece", next_piece)
+	bottom_display.set_next_piece(next_piece)
 
 func spawn_current_piece():
 	if current_piece:
@@ -61,6 +67,9 @@ func spawn_current_piece():
 	set_piece_position(START_X, START_Y)
 	if not verify_proposed_coordinates(START_X, START_Y, current_piece.current_positions()):
 		emit_signal("lost_game")
+		# This may not be appropriate as we add more game?
+		get_tree().paused = true
+		$YouLoseNode/YouLose.visible = true
 	choose_next_piece()
 
 # Called when the node enters the scene tree for the first time.
@@ -69,6 +78,11 @@ func _ready():
 	choose_next_piece()
 	spawn_current_piece()
 	tickdown_timer.set_wait_time(tickdown_timer_amount)
+
+	var levelIncreaseTimer = $LevelIncreaseTimer
+	levelIncreaseTimer.connect("timeout", self, "level_up")
+	var tickdownTimer = $TickdownTimer
+	tickdownTimer.connect("timeout", self, "handle_tickdown")
 
 func verify_proposed_coordinates(proposed_x, proposed_y, positions):
 	for position in calculate_absolute_positions(proposed_x, proposed_y, positions):
@@ -85,7 +99,10 @@ func maybe_clear_rows(rows_to_clear):
 	if rows_to_clear:
 		landscape.clear_rows(rows_to_clear)
 		landscape.render_landscape()
-		emit_signal("rows_cleared", len(rows_to_clear))
+		var number_cleared = len(rows_to_clear)
+		emit_signal("rows_cleared", number_cleared)
+		bottom_display.increment_score(number_cleared)
+		shake_camera.rows_cleared_shake(number_cleared)
 	
 func add_to_landscape():
 	var absolute_positions = calculate_absolute_positions(current_x, current_y, current_piece.current_positions())
@@ -93,8 +110,9 @@ func add_to_landscape():
 	maybe_clear_rows(rows_to_clear)
 	landscape.render_landscape()
 	emit_signal("placed")
+	shake_camera.place_shake()
 
-func _on_TickdownTimer_timeout():
+func handle_tickdown():
 	var proposed_y = current_y + 1
 	if verify_proposed_coordinates(current_x, proposed_y, current_piece.current_positions()):
 		set_piece_position(current_x, proposed_y)
@@ -115,6 +133,7 @@ func perform_drop():
 	add_to_landscape()
 	spawn_current_piece()
 	emit_signal("dropped")
+	shake_camera.drop_shake()
 	
 func perform_hold():
 	if held_piece == null:
@@ -131,6 +150,7 @@ func perform_hold():
 		set_piece_position(START_X, START_Y)
 	
 	emit_signal("held_piece", held_piece)
+	bottom_display.set_held_piece(held_piece)
 	
 func maybe_redisplay_ghost_coordinates():
 	var ghost_y = y_coordinate_for_drop()

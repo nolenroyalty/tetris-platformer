@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://UI/BackgroundDark.png" type="Texture" id=1]
-[ext_resource path="res://UI/PieceDisplayBox/PieceDisplayBox.gd" type="Script" id=2]
+[ext_resource path="res://UI/BottomDisplay/PieceDisplayBox/PieceDisplayBox.gd" type="Script" id=2]
+[ext_resource path="res://Fonts/pixuf.tres" type="DynamicFontData" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 3 )
 
 [node name="PieceDisplayBox" type="Node2D"]
 script = ExtResource( 2 )
@@ -9,6 +13,7 @@ script = ExtResource( 2 )
 [node name="Label" type="Label" parent="."]
 margin_right = 139.0
 margin_bottom = 17.0
+custom_fonts/font = SubResource( 1 )
 text = "TEXT HERE"
 align = 1
 
