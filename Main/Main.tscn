@@ -22,8 +22,9 @@ visible = false
 position = Vector2( 328, 296 )
 
 [node name="Platformer" parent="." instance=ExtResource( 5 )]
-position = Vector2( 504, 416 )
+position = Vector2( 512, 0 )
 
 [connection signal="dropped" from="Tetris" to="Camera" method="drop_shake"]
 [connection signal="lost_tetris_game" from="Tetris" to="." method="lost_tetris_game"]
+[connection signal="rendered_ghost" from="Tetris" to="." method="ghost_rendered"]
 [connection signal="rows_cleared" from="Tetris" to="Camera" method="rows_cleared_shake"]

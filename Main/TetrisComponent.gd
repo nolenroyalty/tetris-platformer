@@ -7,8 +7,9 @@ signal added_to_landscape(absolute_positions, color)
 signal rows_cleared(count)
 signal lost_tetris_game
 signal levelup(level)
+signal rendered_ghost(ghost)
 
-const START_X = Constants.BOARD_WIDTH / 2
+const START_X = Constants.BOARD_WIDTH / 2 - 1
 const START_Y = 0
 const TICKDOWN_TIMER_START = 1.1
 
@@ -141,7 +142,8 @@ func perform_hold():
 	
 	emit_signal("held_piece", held_piece)
 	bottom_display.set_held_piece(held_piece)
-	
+
+# TODO: We should only call this if the piece has been moved or rotated or if we've created a new piece.	
 func maybe_redisplay_ghost_coordinates():
 	var ghost_y = y_coordinate_for_drop()
 	if ghost:
@@ -155,6 +157,7 @@ func maybe_redisplay_ghost_coordinates():
 	ghost.rotation_offset = current_piece.rotation_offset
 	ghost.render_piece(true)
 	add_child(ghost)
+	emit_signal("rendered_ghost", ghost)
 
 func attempt_rotation():
 	var proposed_positions = current_piece.positions_if_rotated()
