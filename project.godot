@@ -111,6 +111,15 @@ platformer_down={
  ]
 }
 
+[layer_names]
+
+2d_render/layer_1="player"
+2d_render/layer_2="enemy"
+2d_render/layer_3="ghost block"
+2d_physics/layer_1="player"
+2d_physics/layer_2="enemy"
+2d_physics/layer_3="ghost block"
+
 [mono]
 
 project/assembly_name="Tetris Platformer"
