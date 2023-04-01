@@ -22,5 +22,4 @@ position = Vector2( 328, 296 )
 
 [connection signal="dropped" from="Tetris" to="Camera" method="drop_shake"]
 [connection signal="lost_tetris_game" from="Tetris" to="." method="lost_tetris_game"]
-[connection signal="placed" from="Tetris" to="Camera" method="place_shake"]
 [connection signal="rows_cleared" from="Tetris" to="Camera" method="rows_cleared_shake"]

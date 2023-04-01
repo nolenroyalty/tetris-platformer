@@ -60,7 +60,7 @@ margin_right = 40.0
 margin_bottom = 14.0
 custom_fonts/font = SubResource( 2 )
 text = "0"
-align = 2
+align = 1
 
 [node name="Level" type="Control" parent="ScoreAndLevel"]
 anchor_left = 0.33
@@ -77,8 +77,9 @@ custom_fonts/font = SubResource( 3 )
 text = "Level:"
 
 [node name="LevelNumber" type="Label" parent="ScoreAndLevel/Level"]
+anchor_right = 0.407
 margin_right = 40.0
 margin_bottom = 14.0
 custom_fonts/font = SubResource( 4 )
 text = "1"
-align = 2
+align = 1

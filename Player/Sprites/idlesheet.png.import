@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Blue.png-df7b17c4433932700cbce71161319872.stex"
+path="res://.import/idlesheet.png-6132dc65d72b8762a1fbb9978ed6b474.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Piece/Sprites/Blue.png"
-dest_files=[ "res://.import/Blue.png-df7b17c4433932700cbce71161319872.stex" ]
+source_file="res://Player/Sprites/idlesheet.png"
+dest_files=[ "res://.import/idlesheet.png-6132dc65d72b8762a1fbb9978ed6b474.stex" ]
 
 [params]
 

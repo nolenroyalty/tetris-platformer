@@ -3,7 +3,7 @@ extends Node2D
 signal chose_next_piece(piece)
 signal held_piece(piece)
 signal dropped
-signal placed
+signal added_to_landscape(absolute_positions, color)
 signal rows_cleared(count)
 signal lost_tetris_game
 signal levelup(level)
@@ -101,7 +101,7 @@ func add_to_landscape():
 	var rows_to_clear = landscape.add_to_landscape(absolute_positions, current_piece.color)
 	maybe_clear_rows(rows_to_clear)
 	landscape.render_landscape()
-	emit_signal("placed")
+	emit_signal("added_to_landscape", absolute_positions, current_piece.color)
 
 func handle_tickdown():
 	var proposed_y = current_y + 1
