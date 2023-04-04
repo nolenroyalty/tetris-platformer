@@ -41,8 +41,8 @@ func _process(delta):
 func drop_shake(_var):
 	add_trauma(drop_trauma)
 
-func rows_cleared_shake(count):
-	add_trauma(row_clear_trauma * count)
+func rows_cleared_shake(rows):
+	add_trauma(row_clear_trauma * len(rows))
 
 func place_shake():
 	add_trauma(place_trauma)

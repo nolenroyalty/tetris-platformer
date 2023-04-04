@@ -18,10 +18,8 @@ func dupe(piece : Piece) -> Piece:
 # fits (and we could tweak the size)
 
 func add_piece(piece : Piece) -> void:
-	print("adding piece")
 	piece = dupe(piece)
 	if current_piece != null:
-		print("removing child")
 		remove_child(current_piece)
 	current_piece = piece
 	add_child(current_piece)
@@ -58,10 +56,3 @@ func _process(_delta):
 		attempt_move(0, 1)
 	if Input.is_action_just_pressed("ui_up"):
 		attempt_move(0, -1)
-	# current_piece.render_piece(false)
-
-# func _ready() -> void:
-# 	var piece = tetrisPiece.instance()
-# 	piece.set_shape(piece.SHAPES.T)
-# 	piece.rotation_offset = 0
-# 	add_piece(piece)

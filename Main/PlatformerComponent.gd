@@ -3,6 +3,8 @@ extends Node2D
 class_name Platformer
 
 var tetrisPiece = preload("res://Piece/Piece.tscn")
+onready var break_lines = $BreakLines
+onready var bloopers = $Bloopers
 var ghost = null
 var done_for_this_ghost = true
 
@@ -37,13 +39,8 @@ func show_ghost(new_ghost):
 	
 	add_child(ghost)
 
-func add_to_bloopers(piece):
-	var i = 0
-	for node in get_children():
-		if node.is_in_group("tell_when_piece_is_dropped"):
-			print(i)
-			i+=1
-			node.add_piece(piece)
+func add_to_bloopers(piece): bloopers.add_to_bloopers(piece)
+func maybe_explode(row): break_lines.maybe_explode(row)
 
 # func _physics_process(_delta):
 # 	if ghost and not done_for_this_ghost:

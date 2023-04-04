@@ -4,7 +4,7 @@ signal chose_next_piece(piece)
 signal held_piece(piece)
 signal dropped
 signal added_to_landscape(absolute_positions, color)
-signal rows_cleared(count)
+signal rows_cleared(rows)
 signal lost_tetris_game
 signal levelup(level)
 signal rendered_ghost(ghost)
@@ -95,7 +95,7 @@ func maybe_clear_rows(rows_to_clear):
 		landscape.clear_rows(rows_to_clear)
 		landscape.render_landscape()
 		var number_cleared = len(rows_to_clear)
-		emit_signal("rows_cleared", number_cleared)
+		emit_signal("rows_cleared", rows_to_clear)
 		bottom_display.increment_score(number_cleared)
 	
 func add_to_landscape():
