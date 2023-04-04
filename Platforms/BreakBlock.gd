@@ -14,3 +14,5 @@ func explode():
 	add_child(particles)
 	particles.emitting = true
 	blockSprite.visible = false
+	$CollisionShape2D.disabled = true
+	
