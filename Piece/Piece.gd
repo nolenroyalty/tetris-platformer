@@ -1,5 +1,7 @@
 extends Node2D
 
+class_name Piece
+
 var rng = RandomNumberGenerator.new()
 var singleBlock = preload("res://Piece/Block/Block.tscn")
 var PP = preload("res://Piece/PiecePositions.gd")
@@ -41,14 +43,18 @@ func width():
 func height():
 	return calculate_dimension(1)
 
-func calc_least(index):
+func calc_extreme(index, take_min):
 	var positions = current_positions()
-	var least = positions[0][index]
-	for position in positions: least = min(least, position[index])
-	return least
+	var extreme = positions[0][index]
+	for position in positions: 
+		extreme = min(extreme, position[index]) if take_min else max(extreme, position[index])
 
-func leftmost(): return calc_least(0)
-func upmost(): return calc_least(1)
+	return extreme
+
+func leftmost(): return calc_extreme(0, true)
+func rightmost(): return calc_extreme(0, false)
+func upmost(): return calc_extreme(1, true)
+func downmost(): return calc_extreme(1, false)
 
 func clear_piece():
 	for piece in current_sprites:
@@ -86,3 +92,10 @@ func randomize_piece():
 func init(as_ghost):
 	randomize_piece()
 	render_piece(as_ghost)
+
+func is_colliding():
+	for block in current_sprites:
+		if block.is_colliding(): return true
+
+func print_colliding():
+	for block in current_sprites: block.print_colliding()

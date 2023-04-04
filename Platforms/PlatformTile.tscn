@@ -31,4 +31,6 @@ points = PoolVector2Array( 64, 64, 0, 64, 0, 0, 64, 0 )
 [node name="PlatformTile" type="TileMap"]
 scale = Vector2( 0.5, 0.5 )
 tile_set = SubResource( 1 )
+collision_layer = 8
+collision_mask = 8
 format = 1

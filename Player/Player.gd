@@ -37,7 +37,7 @@ func _physics_process(delta):
 		maybe_idle()
 		apply_friction(delta)
 
-	if tried_to_jump and can_jump:
+	if tried_to_jump and can_jump and is_on_floor():
 		animation.play("jump")
 		velocity.y = -JUMP_SPEED
 		can_jump = false

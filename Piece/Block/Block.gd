@@ -31,3 +31,15 @@ func init(color, overlay_ghost):
 		sprite.scale = Vector2(0.5, 0.5)
 		sprite.set_texture(texture)
 		add_child(sprite)
+
+var i = true
+
+func is_colliding():
+	# if i:
+	# 	print($Area2D.get_overlapping_bodies())
+	# 	i = false
+	# return true
+	return len($Area2D.get_overlapping_bodies()) > 0
+
+func print_colliding():
+	print($Area2D.get_overlapping_bodies())

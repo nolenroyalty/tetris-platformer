@@ -8,6 +8,22 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Node2D",
+"class": "Piece",
+"language": "GDScript",
+"path": "res://Piece/Piece.gd"
+}, {
+"base": "Node2D",
+"class": "Platformer",
+"language": "GDScript",
+"path": "res://Main/PlatformerComponent.gd"
+} ]
+_global_script_class_icons={
+"Piece": "",
+"Platformer": ""
+}
+
 [application]
 
 config/name="Tetris Platformer"
@@ -119,6 +135,7 @@ platformer_down={
 2d_physics/layer_1="player"
 2d_physics/layer_2="enemy"
 2d_physics/layer_3="ghost block"
+2d_physics/layer_4="stage"
 
 [mono]
 

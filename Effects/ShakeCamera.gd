@@ -37,7 +37,8 @@ func _process(delta):
 		trauma = max(trauma - decay * delta, 0)
 		shake()
 
-func drop_shake():
+# This is a hack, we need to ignore a param from the signal
+func drop_shake(_var):
 	add_trauma(drop_trauma)
 
 func rows_cleared_shake(count):

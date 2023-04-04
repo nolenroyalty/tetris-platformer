@@ -20,7 +20,7 @@ onready var tickdown_timer = $TickdownTimer
 onready var bottom_display = $BottomDisplay
 
 var tickdown_timer_amount = TICKDOWN_TIMER_START 
-var current_piece
+var current_piece : Piece
 var next_piece
 var held_piece
 var current_x
@@ -64,6 +64,7 @@ func spawn_current_piece():
 		# TODO maybe we should hide the piece here?
 		emit_signal("lost_tetris_game")
 	choose_next_piece()
+	redisplay_ghost()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -122,9 +123,10 @@ func y_coordinate_for_drop():
 func perform_drop():
 	var proposed_y = y_coordinate_for_drop()
 	set_piece_position(current_x, proposed_y)
+	emit_signal("dropped", current_piece)
 	add_to_landscape()
 	spawn_current_piece()
-	emit_signal("dropped")
+	
 	
 func perform_hold():
 	if held_piece == null:
@@ -140,11 +142,11 @@ func perform_hold():
 		add_child(current_piece)
 		set_piece_position(START_X, START_Y)
 	
+	redisplay_ghost()
 	emit_signal("held_piece", held_piece)
 	bottom_display.set_held_piece(held_piece)
 
-# TODO: We should only call this if the piece has been moved or rotated or if we've created a new piece.	
-func maybe_redisplay_ghost_coordinates():
+func redisplay_ghost():
 	var ghost_y = y_coordinate_for_drop()
 	if ghost:
 		ghost.queue_free()
@@ -239,8 +241,7 @@ func _process(_delta):
 	
 	if performed_an_action:
 		reset_tickdown_timer(0.2)
-	
-	maybe_redisplay_ghost_coordinates()
+		redisplay_ghost()
 	
 	if Input.is_action_just_pressed("debug_spawn"):
 		add_to_landscape()
