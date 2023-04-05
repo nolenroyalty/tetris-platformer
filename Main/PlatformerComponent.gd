@@ -2,6 +2,8 @@ extends Node2D
 
 class_name Platformer
 
+signal tnt_triggered(row)
+
 var tetrisPiece = preload("res://Piece/Piece.tscn")
 onready var break_lines = $BreakLines
 onready var bloopers = $Bloopers
@@ -9,14 +11,14 @@ var ghost = null
 var done_for_this_ghost = true
 
 func _ready():
-	pass # Replace with function body.
+	for child in $TNT.get_children():
+		child.connect("tnt_triggered", self, "propagate_tnt_trigger")
 
-# func determine_ghost_y(ghost):
-# 	while true:
-# 		if ghost.is_colliding():
-# 			ghost.position.y -= Constants.PIECE_SIZE
-# 			break
-# 		ghost.position.y += Constants.PIECE_SIZE
+
+func add_to_bloopers(piece): bloopers.add_to_bloopers(piece)
+func maybe_explode(row): break_lines.maybe_explode(row)
+
+func propagate_tnt_trigger(row): emit_signal("tnt_triggered", row)
 
 func show_ghost(new_ghost):
 	if ghost != null:
@@ -39,8 +41,13 @@ func show_ghost(new_ghost):
 	
 	add_child(ghost)
 
-func add_to_bloopers(piece): bloopers.add_to_bloopers(piece)
-func maybe_explode(row): break_lines.maybe_explode(row)
+
+# func determine_ghost_y(ghost):
+# 	while true:
+# 		if ghost.is_colliding():
+# 			ghost.position.y -= Constants.PIECE_SIZE
+# 			break
+# 		ghost.position.y += Constants.PIECE_SIZE
 
 # func _physics_process(_delta):
 # 	if ghost and not done_for_this_ghost:

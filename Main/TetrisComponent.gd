@@ -97,6 +97,12 @@ func maybe_clear_rows(rows_to_clear):
 		var number_cleared = len(rows_to_clear)
 		emit_signal("rows_cleared", rows_to_clear)
 		bottom_display.increment_score(number_cleared)
+
+func detonate(row):
+	landscape.clear_rows([row])
+	landscape.call_deferred("render_landscape")
+	self.call_deferred("redisplay_ghost")
+	# Not sure if this should emit a rows_cleared signal?
 	
 func add_to_landscape():
 	var absolute_positions = calculate_absolute_positions(current_x, current_y, current_piece.current_positions())
