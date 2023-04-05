@@ -14,6 +14,7 @@ const START_Y = 0
 const TICKDOWN_TIMER_START = 1.1
 
 var tetrisPiece = preload("res://Piece/Piece.tscn")
+var rowExplosion = preload("res://Effects/RowExplosion.tscn")
 onready var landscape = $Landscape
 onready var input_timer = $InputTimer
 onready var tickdown_timer = $TickdownTimer
@@ -90,6 +91,17 @@ func verify_proposed_coordinates(proposed_x, proposed_y, positions):
 			return false
 	return true
 
+func make_explosion_at_row(row, strong):
+	var x = Constants.PIECE_SIZE * 5
+	#warning-ignore:integer_division
+	var y = Constants.PIECE_SIZE * row + Constants.PIECE_SIZE / 2
+	var explosion = rowExplosion.instance()
+	explosion.z_index = 1
+	explosion.position = Vector2(x, y)
+	if strong: explosion.amount = 200
+	add_child(explosion)
+	explosion.emitting = true
+
 func maybe_clear_rows(rows_to_clear):
 	if rows_to_clear:
 		landscape.clear_rows(rows_to_clear)
@@ -97,11 +109,13 @@ func maybe_clear_rows(rows_to_clear):
 		var number_cleared = len(rows_to_clear)
 		emit_signal("rows_cleared", rows_to_clear)
 		bottom_display.increment_score(number_cleared)
+		for row in rows_to_clear: make_explosion_at_row(row, false)
 
 func detonate(row):
 	landscape.clear_rows([row])
 	landscape.call_deferred("render_landscape")
 	self.call_deferred("redisplay_ghost")
+	make_explosion_at_row(row, true)
 	# Not sure if this should emit a rows_cleared signal?
 	
 func add_to_landscape():

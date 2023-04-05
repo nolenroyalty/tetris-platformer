@@ -1,13 +1,13 @@
 extends Node2D
 
-var blue = preload("res://Piece/Sprites/Blue.png")
+var blue = preload("res://Piece/Sprites/Updated/blue.png")
 var ghost = preload("res://Piece/Sprites/Ghost.png")
-var green = preload("res://Piece/Sprites/Green.png")
-var lightblue = preload("res://Piece/Sprites/LightBlue.png")
-var orange = preload("res://Piece/Sprites/Orange.png")
-var purple = preload("res://Piece/Sprites/Purple.png")
-var red  = preload("res://Piece/Sprites/Red.png")
-var yellow = preload("res://Piece/Sprites/Yellow.png")
+var green = preload("res://Piece/Sprites/Updated/green.png")
+var lightblue = preload("res://Piece/Sprites/Updated/lightblue.png")
+var orange = preload("res://Piece/Sprites/Updated/orange.png")
+var purple = preload("res://Piece/Sprites/Updated/purple.png")
+var red  = preload("res://Piece/Sprites/Updated/red.png")
+var yellow = preload("res://Piece/Sprites/Updated/yellow.png")
 
 
 func init(color, overlay_ghost):
@@ -32,13 +32,7 @@ func init(color, overlay_ghost):
 		sprite.set_texture(texture)
 		add_child(sprite)
 
-var i = true
-
 func is_colliding():
-	# if i:
-	# 	print($Area2D.get_overlapping_bodies())
-	# 	i = false
-	# return true
 	return len($Area2D.get_overlapping_bodies()) > 0
 
 func print_colliding():

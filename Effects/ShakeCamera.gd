@@ -7,6 +7,7 @@ export (NodePath) var target
 export var drop_trauma = 0.15
 export var row_clear_trauma = 0.05
 export var place_trauma = 0.1
+export var tnt_trauma = 0.5
 
 onready var noise = OpenSimplexNoise.new()
 var noise_y = 0
@@ -38,11 +39,14 @@ func _process(delta):
 		shake()
 
 # This is a hack, we need to ignore a param from the signal
-func drop_shake(_var):
+func drop_shake():
 	add_trauma(drop_trauma)
 
-func rows_cleared_shake(rows):
-	add_trauma(row_clear_trauma * len(rows))
+func row_cleared_shake():
+	add_trauma(row_clear_trauma)
 
 func place_shake():
 	add_trauma(place_trauma)
+
+func tnt_shake():
+	add_trauma(tnt_trauma)

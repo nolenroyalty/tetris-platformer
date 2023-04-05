@@ -3,10 +3,14 @@ extends Node2D
 class_name Platformer
 
 signal tnt_triggered(row)
+signal player_entered_door
+signal derper_hit_player
 
 var tetrisPiece = preload("res://Piece/Piece.tscn")
 onready var break_lines = $BreakLines
 onready var bloopers = $Bloopers
+onready var door = $Door
+onready var derper = $Derper
 var ghost = null
 var done_for_this_ghost = true
 
@@ -14,11 +18,21 @@ func _ready():
 	for child in $TNT.get_children():
 		child.connect("tnt_triggered", self, "propagate_tnt_trigger")
 
+	var _ignore = door.connect("player_entered", self, "handle_player_entered_door")
+	_ignore = derper.connect("player_entered_derper_hitbox", self, "handle_derper_hit_player")
 
 func add_to_bloopers(piece): bloopers.add_to_bloopers(piece)
 func maybe_explode(row): break_lines.maybe_explode(row)
 
-func propagate_tnt_trigger(row): emit_signal("tnt_triggered", row)
+func handle_player_entered_door():	emit_signal("player_entered_door")
+
+func handle_derper_hit_player(): 
+	# Maybe play a death animation, make us flash a color, etc?
+	emit_signal("derper_hit_player")
+
+func propagate_tnt_trigger(row): 
+	print(row)
+	emit_signal("tnt_triggered", row)
 
 func show_ghost(new_ghost):
 	if ghost != null:

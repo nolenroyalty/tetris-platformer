@@ -22,9 +22,14 @@ func _ready():
 	var number_of_blocks = int(texture_rect.rect_size.x) / Constants.PIECE_SIZE
 	var block_number = 0
 	while block_number < number_of_blocks:
-		var block = breakBlock.instance()
+		var block : BreakBlock = breakBlock.instance()
 		add_child(block)
 		block.position.x = block_number * Constants.PIECE_SIZE
+		if block_number == 0:
+			block.set_left_sprite()
+		if block_number + 1 == number_of_blocks:
+			block.set_right_sprite()
+			
 		blocks.append(block)
 		block_number += 1
 		block.connect("block_freed", self, "handle_block_destroyed")

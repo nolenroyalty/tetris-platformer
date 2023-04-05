@@ -1,17 +1,21 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Platforms/PlatformTile.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Main/PlatformerComponent.gd" type="Script" id=3]
 [ext_resource path="res://Enemies/Derper.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Platforms/Blooper.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Platforms/TNTSwitch.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Platforms/BreakLine.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Main/BreakLines.gd" type="Script" id=7]
 [ext_resource path="res://Main/Bloopers.gd" type="Script" id=8]
-[ext_resource path="res://Platforms/TNTSwitch.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Platforms/Door.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Platforms/Background.tscn" type="PackedScene" id=11]
 
 [node name="Platformer" type="Node2D"]
 script = ExtResource( 3 )
+
+[node name="Background2" parent="." instance=ExtResource( 11 )]
+position = Vector2( 32, 0 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 88, 576 )
@@ -21,10 +25,11 @@ ACCELERATION = 800
 JUMP_SPEED = 400
 
 [node name="PlatformTile" parent="." instance=ExtResource( 2 )]
-tile_data = PoolIntArray( 0, 1, 0, 11, 1, 0, 65536, 1, 65536, 65547, 1, 65536, 131072, 1, 65536, 131083, 1, 65536, 196608, 1, 65536, 196619, 1, 65536, 262144, 1, 65537, 262145, 1, 196610, 262146, 1, 196610, 262147, 1, 196610, 262148, 1, 196610, 262149, 1, 196611, 262155, 1, 65536, 327680, 1, 65536, 327689, 1, 196609, 327690, 1, 196610, 327691, 1, 65539, 393216, 1, 65536, 393227, 1, 65536, 458752, 1, 65536, 458763, 1, 65536, 524288, 1, 65536, 524295, 1, 196609, 524296, 1, 3, 524299, 1, 65536, 589824, 1, 65536, 589832, 1, 131073, 589833, 1, 196610, 589834, 1, 196610, 589835, 1, 65539, 655360, 1, 65536, 655371, 1, 65536, 720896, 1, 65536, 720907, 1, 65536, 786432, 1, 65536, 786443, 1, 65536, 851968, 1, 65536, 851979, 1, 65536, 917504, 1, 65536, 917515, 1, 65536, 983040, 1, 65537, 983041, 1, 196610, 983042, 1, 196611, 983051, 1, 65536, 1048576, 1, 65536, 1048587, 1, 65536, 1114112, 1, 65536, 1114123, 1, 65536, 1179648, 1, 65536, 1179659, 1, 65536, 1245184, 1, 65536, 1245195, 1, 65536, 1310720, 1, 131073, 1310721, 1, 196610, 1310722, 1, 196610, 1310723, 1, 196610, 1310724, 1, 196610, 1310725, 1, 196610, 1310726, 1, 196610, 1310727, 1, 196610, 1310728, 1, 196610, 1310729, 1, 196610, 1310730, 1, 196610, 1310731, 1, 131075 )
+z_index = -2
+tile_data = PoolIntArray( 0, 2, 0, 11, 2, 0, 65536, 2, 65536, 65547, 2, 65536, 131072, 2, 65536, 131083, 2, 65536, 196608, 2, 65536, 196619, 2, 65536, 262144, 2, 65537, 262145, 2, 2, 262146, 2, 2, 262147, 2, 2, 262148, 2, 2, 262149, 2, 3, 262155, 2, 65536, 327680, 2, 65537, 327681, 2, 131074, 327682, 2, 131074, 327683, 2, 131074, 327684, 2, 131074, 327685, 2, 131075, 327689, 2, 196609, 327690, 2, 196610, 327691, 2, 65539, 393216, 2, 65536, 393227, 2, 65536, 458752, 2, 65536, 458763, 2, 65536, 524288, 2, 65536, 524295, 2, 196609, 524296, 2, 3, 524299, 2, 65536, 589824, 2, 65536, 589832, 2, 131073, 589833, 2, 196610, 589834, 2, 196610, 589835, 2, 65539, 655360, 2, 65536, 655371, 2, 65536, 720896, 2, 65536, 720907, 2, 65536, 786432, 2, 65536, 786443, 2, 65536, 851968, 2, 65536, 851979, 2, 65536, 917504, 2, 65536, 917515, 2, 65536, 983040, 2, 65537, 983041, 2, 196610, 983042, 2, 196611, 983050, 2, 196609, 983051, 2, 65539, 1048576, 2, 65536, 1048587, 2, 65536, 1114112, 2, 65536, 1114123, 2, 65536, 1179648, 2, 65536, 1179659, 2, 65536, 1245184, 2, 65536, 1245195, 2, 65536, 1310720, 2, 131073, 1310721, 2, 196610, 1310722, 2, 196610, 1310723, 2, 196610, 1310724, 2, 196610, 1310725, 2, 196610, 1310726, 2, 196610, 1310727, 2, 196610, 1310728, 2, 196610, 1310729, 2, 196610, 1310730, 2, 196610, 1310731, 2, 131075 )
 
 [node name="Derper" parent="." instance=ExtResource( 4 )]
-position = Vector2( 40, 88 )
+position = Vector2( 280, 440 )
 scale = Vector2( 0.5, 0.5 )
 
 [node name="BreakLines" type="Node2D" parent="."]
@@ -52,25 +57,18 @@ margin_right = 288.0
 [node name="Bloopers" type="Node2D" parent="."]
 script = ExtResource( 8 )
 
-[node name="Blooper" parent="Bloopers" instance=ExtResource( 5 )]
-position = Vector2( 160, 512 )
-z_index = -1
-
-[node name="Blooper2" parent="Bloopers" instance=ExtResource( 5 )]
-position = Vector2( 104, 320 )
-
-[node name="Blooper3" parent="Bloopers" instance=ExtResource( 5 )]
-position = Vector2( 136, 0 )
-
 [node name="TNT" type="Node2D" parent="."]
 
-[node name="TNTSwitch" parent="TNT" instance=ExtResource( 9 )]
-position = Vector2( 32, 448 )
-SWITCH_INDEX = 14
-
-[node name="TNTSwitch2" parent="TNT" instance=ExtResource( 9 )]
+[node name="TNTSwitch" parent="TNT" instance=ExtResource( 5 )]
 position = Vector2( 320, 608 )
 SWITCH_INDEX = 19
+
+[node name="TNTSwitch2" parent="TNT" instance=ExtResource( 5 )]
+position = Vector2( 320, 256 )
+
+[node name="Door" parent="." instance=ExtResource( 10 )]
+position = Vector2( 90, 97 )
+z_index = -1
 
 [editable path="BreakLines/BreakLine"]
 [editable path="BreakLines/BreakLine3"]

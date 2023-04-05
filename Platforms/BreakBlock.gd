@@ -1,5 +1,7 @@
 extends StaticBody2D
 
+class_name BreakBlock
+
 var blockExplosion = preload("res://Effects/BlockExplosion.tscn")
 onready var blockSprite = $Sprite
 signal block_freed
@@ -15,4 +17,12 @@ func explode():
 	particles.emitting = true
 	blockSprite.visible = false
 	$CollisionShape2D.disabled = true
-	
+
+func rotate_sprite(d):
+	blockSprite.rotation_degrees = d
+
+func set_left_sprite():
+	blockSprite.frame = 1
+
+func set_right_sprite():
+	blockSprite.frame = 2
