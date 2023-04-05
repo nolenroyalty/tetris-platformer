@@ -98,7 +98,9 @@ func make_explosion_at_row(row, strong):
 	var explosion = rowExplosion.instance()
 	explosion.z_index = 1
 	explosion.position = Vector2(x, y)
-	if strong: explosion.amount = 200
+	if strong: 
+		explosion.amount = 200
+		explosion.lifetime = 0.3
 	add_child(explosion)
 	explosion.emitting = true
 

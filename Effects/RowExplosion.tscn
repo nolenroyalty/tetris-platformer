@@ -5,7 +5,7 @@
 [node name="RowExplosion" type="CPUParticles2D"]
 emitting = false
 amount = 100
-lifetime = 0.2
+lifetime = 0.15
 one_shot = true
 explosiveness = 0.8
 texture = ExtResource( 1 )

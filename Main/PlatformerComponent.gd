@@ -11,6 +11,8 @@ onready var break_lines = $BreakLines
 onready var bloopers = $Bloopers
 onready var door = $Door
 onready var derper = $Derper
+onready var block_computer = $BlockComputer
+onready var player = $Player
 var ghost = null
 var done_for_this_ghost = true
 
@@ -20,6 +22,16 @@ func _ready():
 
 	var _ignore = door.connect("player_entered", self, "handle_player_entered_door")
 	_ignore = derper.connect("player_entered_derper_hitbox", self, "handle_derper_hit_player")
+	_ignore = block_computer.connect("began_computer_operation", self, "handle_began_computer_operation")
+	_ignore = block_computer.connect("ended_computer_operation", self, "handle_ended_computer_operation")
+	
+func handle_began_computer_operation():
+	if ghost == null: return
+	block_computer.add_piece(ghost)
+	player.disable_movement()
+
+func handle_ended_computer_operation():
+	player.movement_disabled = false
 
 func add_to_bloopers(piece): bloopers.add_to_bloopers(piece)
 func maybe_explode(row): break_lines.maybe_explode(row)
@@ -31,7 +43,6 @@ func handle_derper_hit_player():
 	emit_signal("derper_hit_player")
 
 func propagate_tnt_trigger(row): 
-	print(row)
 	emit_signal("tnt_triggered", row)
 
 func show_ghost(new_ghost):

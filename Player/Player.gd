@@ -12,6 +12,7 @@ export var HORIZONTAL_PENALTY_IN_THE_AIR = 0.45
 var velocity = Vector2()
 var just_hit_floor = false
 var can_jump = false
+var movement_disabled = false
 
 func _ready():
 	animation.connect("animation_finished", self, "on_animation_finished")
@@ -20,9 +21,19 @@ func on_animation_finished():
 	if animation.animation == "land":
 		animation.play("idle")
 
+func disable_movement():
+	velocity = Vector2.ZERO
+	movement_disabled = true
+
 func _physics_process(delta):
-	var x = Input.get_axis("platformer_left", "platformer_right")
-	var tried_to_jump = Input.is_action_just_pressed("platformer_jump")
+	var x = 0
+	var tried_to_jump = false
+	if movement_disabled:
+		# We should have an animation here
+		pass
+	else:		
+		x = Input.get_axis("platformer_left", "platformer_right")
+		tried_to_jump = Input.is_action_just_pressed("platformer_jump")
 	
 	if x != 0:
 		maybe_run()

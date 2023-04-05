@@ -14,9 +14,8 @@ func end_game(text):
 func lost_tetris_game(): end_game("YOU LOSE!")
 func handle_player_entered_door(): end_game("YOU WIN!")
 
-func handle_rendered_ghost(_ghost):
-	pass
-	# platformer.show_ghost(ghost)
+func handle_rendered_ghost(ghost):
+	platformer.ghost = ghost
 
 func handle_dropped_piece(piece):
 	platformer.add_to_bloopers(piece)

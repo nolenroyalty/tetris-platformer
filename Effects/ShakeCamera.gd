@@ -50,3 +50,4 @@ func place_shake():
 
 func tnt_shake():
 	add_trauma(tnt_trauma)
+	
