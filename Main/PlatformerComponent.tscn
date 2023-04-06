@@ -66,9 +66,11 @@ SWITCH_INDEX = 19
 
 [node name="TNTSwitch2" parent="TNT" instance=ExtResource( 5 )]
 position = Vector2( 288, 256 )
+SWITCH_INDEX = 19
 
 [node name="TNTSwitch3" parent="TNT" instance=ExtResource( 5 )]
 position = Vector2( 320, 128 )
+SWITCH_INDEX = 19
 
 [node name="Door" parent="." instance=ExtResource( 10 )]
 position = Vector2( 90, 97 )
