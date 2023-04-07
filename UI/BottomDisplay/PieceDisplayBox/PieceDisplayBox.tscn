@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://UI/BackgroundDark.png" type="Texture" id=1]
+[ext_resource path="res://UI/BottomDisplay/PieceDisplayBox/Sprites/nextpiecebackground.png" type="Texture" id=1]
 [ext_resource path="res://UI/BottomDisplay/PieceDisplayBox/PieceDisplayBox.gd" type="Script" id=2]
 [ext_resource path="res://Fonts/pixuf.tres" type="DynamicFontData" id=3]
 
@@ -10,17 +10,26 @@ font_data = ExtResource( 3 )
 [node name="PieceDisplayBox" type="Node2D"]
 script = ExtResource( 2 )
 
-[node name="Label" type="Label" parent="."]
-margin_right = 139.0
-margin_bottom = 17.0
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_right = 136.0
+margin_bottom = 32.0
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+margin_right = 136.0
+margin_bottom = 14.0
+size_flags_vertical = 2
 custom_fonts/font = SubResource( 1 )
 text = "TEXT HERE"
 align = 1
 
-[node name="Background" type="Sprite" parent="."]
-visible = false
-position = Vector2( 0, 15 )
-scale = Vector2( 2.17188, 1.32813 )
+[node name="Control" type="Control" parent="VBoxContainer"]
+margin_top = 18.0
+margin_right = 136.0
+margin_bottom = 32.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Nextpiecebackground" type="Sprite" parent="VBoxContainer/Control"]
 z_index = -1
 texture = ExtResource( 1 )
 centered = false
