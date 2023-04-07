@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Platforms/PlatformTile.tscn" type="PackedScene" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://Platforms/BlockComputer/BlockComputer.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Platforms/Finish.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Platforms/Background.tscn" type="PackedScene" id=11]
+[ext_resource path="res://UI/Controls.tscn" type="PackedScene" id=12]
 
 [node name="Platformer" type="Node2D"]
 script = ExtResource( 3 )
@@ -79,6 +80,7 @@ z_index = 7
 z_as_relative = false
 
 [node name="Computer" parent="BlockComputer" index="1"]
+position = Vector2( 32, 34 )
 z_as_relative = false
 
 [node name="Derper" parent="." instance=ExtResource( 4 )]
@@ -87,6 +89,9 @@ position = Vector2( 32, 416 )
 [node name="Finish" parent="." instance=ExtResource( 10 )]
 position = Vector2( 96, 98 )
 z_index = -1
+
+[node name="Controls" parent="." instance=ExtResource( 12 )]
+position = Vector2( 0, 676 )
 
 [editable path="BreakLines/BreakLine"]
 [editable path="BreakLines/BreakLine2"]

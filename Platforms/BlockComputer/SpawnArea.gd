@@ -51,6 +51,12 @@ func attempt_move(dx : int, dy : int) -> void:
 	var new_y = current_piece.position.y + dy * Constants.PIECE_SIZE / 4
 	current_piece.position = Vector2(new_x, new_y)
 
+func rotate_piece():
+	if current_piece == null:
+		return
+	current_piece.rotate_piece()
+	add_piece(current_piece)
+
 func _process(_delta):
 	if not can_move_piece: return
 
@@ -62,3 +68,5 @@ func _process(_delta):
 		attempt_move(0, 1)
 	if Input.is_action_just_pressed("platformer_jump"):
 		attempt_move(0, -1)
+	if Input.is_action_just_pressed("computer_rotate"):
+		rotate_piece()

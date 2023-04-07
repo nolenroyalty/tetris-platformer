@@ -13,6 +13,7 @@ onready var door = $Finish
 onready var derper = $Derper
 onready var block_computer = $BlockComputer
 onready var player = $Player
+onready var controls = $Controls
 var ghost = null
 var done_for_this_ghost = true
 
@@ -29,9 +30,11 @@ func handle_began_computer_operation():
 	if ghost == null: return
 	block_computer.add_piece(ghost)
 	player.disable_movement()
+	controls.set_computer()
 
 func handle_ended_computer_operation():
 	player.movement_disabled = false
+	controls.set_no_computer()
 
 func add_to_bloopers(piece): bloopers.add_to_bloopers(piece)
 func maybe_explode(row): break_lines.maybe_explode(row)

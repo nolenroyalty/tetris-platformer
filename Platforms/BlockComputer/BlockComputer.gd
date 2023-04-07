@@ -17,5 +17,4 @@ func _process(_delta):
 			emit_signal("ended_computer_operation")
 		
 func add_piece(piece): 
-	print("add piece")
 	spawn_area.add_piece(piece)

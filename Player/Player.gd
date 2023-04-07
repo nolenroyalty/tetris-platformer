@@ -22,7 +22,6 @@ func on_animation_finished():
 		animation.play("idle")
 
 func disable_movement():
-	print("disabling movement")
 	velocity = Vector2.ZERO
 	movement_disabled = true
 	animation.play("computer")
