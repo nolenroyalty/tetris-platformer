@@ -44,10 +44,11 @@ animations = [ {
 } ]
 
 [sub_resource type="RectangleShape2D" id=8]
-extents = Vector2( 18, 20.5 )
+extents = Vector2( 16, 19.5 )
 
-[sub_resource type="CircleShape2D" id=9]
-radius = 24.0832
+[sub_resource type="CapsuleShape2D" id=25]
+radius = 23.0
+height = 22.0
 
 [node name="Derper" type="KinematicBody2D"]
 collision_layer = 2
@@ -58,13 +59,12 @@ script = ExtResource( 2 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 7 )
 animation = "walk"
-frame = 5
+frame = 2
 playing = true
 centered = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2( 30, 43.5 )
+position = Vector2( 31, 44.5 )
 shape = SubResource( 8 )
 
 [node name="RayCastRight" type="RayCast2D" parent="."]
@@ -85,5 +85,5 @@ collide_with_areas = true
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-position = Vector2( 32, 35 )
-shape = SubResource( 9 )
+position = Vector2( 32, 40 )
+shape = SubResource( 25 )
