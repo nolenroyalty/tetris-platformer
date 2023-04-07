@@ -1,0 +1,122 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Fonts/defaultlabel.tres" type="Theme" id=1]
+[ext_resource path="res://UI/Sprites/textbackground.png" type="Texture" id=2]
+[ext_resource path="res://Fonts/pixuf.tres" type="DynamicFontData" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=2]
+font_data = ExtResource( 3 )
+
+[node name="PlatformerControls" type="Node2D"]
+
+[node name="Textbackground" type="Sprite" parent="."]
+z_index = -1
+texture = ExtResource( 2 )
+centered = false
+
+[node name="ControlsBox" type="VBoxContainer" parent="."]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 376.0
+margin_bottom = 109.0
+
+[node name="Title" type="Label" parent="ControlsBox"]
+margin_right = 368.0
+margin_bottom = 14.0
+custom_fonts/font = SubResource( 1 )
+text = "Controls"
+align = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ControlsBox"]
+margin_top = 18.0
+margin_right = 368.0
+margin_bottom = 101.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 50
+
+[node name="Tetris" type="VBoxContainer" parent="ControlsBox/HBoxContainer"]
+margin_right = 159.0
+margin_bottom = 83.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Title" type="Label" parent="ControlsBox/HBoxContainer/Tetris"]
+margin_right = 159.0
+margin_bottom = 14.0
+custom_fonts/font = SubResource( 2 )
+text = "~ Tetris ~"
+align = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ControlsBox/HBoxContainer/Tetris"]
+margin_top = 18.0
+margin_right = 159.0
+margin_bottom = 83.0
+size_flags_vertical = 3
+
+[node name="Left" type="Label" parent="ControlsBox/HBoxContainer/Tetris/HBoxContainer"]
+margin_right = 77.0
+margin_bottom = 65.0
+size_flags_horizontal = 3
+theme = ExtResource( 1 )
+text = "A/D
+W
+R
+S"
+
+[node name="Right" type="Label" parent="ControlsBox/HBoxContainer/Tetris/HBoxContainer"]
+margin_left = 81.0
+margin_right = 159.0
+margin_bottom = 65.0
+size_flags_horizontal = 3
+theme = ExtResource( 1 )
+text = "Left/Right
+Drop
+Rotate
+Down"
+align = 2
+
+[node name="Platformer" type="VBoxContainer" parent="ControlsBox/HBoxContainer"]
+margin_left = 209.0
+margin_right = 368.0
+margin_bottom = 83.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Title" type="Label" parent="ControlsBox/HBoxContainer/Platformer"]
+margin_right = 159.0
+margin_bottom = 14.0
+custom_fonts/font = SubResource( 2 )
+text = "~ Platformer ~"
+align = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ControlsBox/HBoxContainer/Platformer"]
+margin_top = 18.0
+margin_right = 159.0
+margin_bottom = 83.0
+size_flags_vertical = 3
+
+[node name="Left" type="Label" parent="ControlsBox/HBoxContainer/Platformer/HBoxContainer"]
+margin_right = 33.0
+margin_bottom = 65.0
+size_flags_horizontal = 3
+theme = ExtResource( 1 )
+text = "J/L
+I
+O
+"
+
+[node name="Right" type="Label" parent="ControlsBox/HBoxContainer/Platformer/HBoxContainer"]
+margin_left = 37.0
+margin_right = 159.0
+margin_bottom = 65.0
+size_flags_horizontal = 3
+theme = ExtResource( 1 )
+text = "Left/Right
+Jump
+Operate Computer
+"
+align = 2

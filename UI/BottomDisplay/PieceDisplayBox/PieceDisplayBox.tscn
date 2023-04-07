@@ -18,6 +18,7 @@ text = "TEXT HERE"
 align = 1
 
 [node name="Background" type="Sprite" parent="."]
+visible = false
 position = Vector2( 0, 15 )
 scale = Vector2( 2.17188, 1.32813 )
 z_index = -1
