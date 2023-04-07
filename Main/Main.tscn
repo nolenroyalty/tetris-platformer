@@ -29,7 +29,7 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_right = 1024.0
+margin_right = 928.0
 margin_bottom = 800.0
 
 [editable path="EndingMessage"]
