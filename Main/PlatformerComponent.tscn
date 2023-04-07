@@ -9,7 +9,7 @@
 [ext_resource path="res://Main/BreakLines.gd" type="Script" id=7]
 [ext_resource path="res://Main/Bloopers.gd" type="Script" id=8]
 [ext_resource path="res://Platforms/BlockComputer/BlockComputer.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Platforms/Door.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Platforms/Finish.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Platforms/Background.tscn" type="PackedScene" id=11]
 
 [node name="Platformer" type="Node2D"]
@@ -63,12 +63,8 @@ SWITCH_INDEX = 19
 position = Vector2( 304, 128 )
 SWITCH_INDEX = 19
 
-[node name="Door" parent="." instance=ExtResource( 10 )]
-position = Vector2( 90, 97 )
-z_index = -1
-
 [node name="BlockComputer" parent="." instance=ExtResource( 9 )]
-position = Vector2( 296, 416 )
+position = Vector2( 288, 416 )
 z_index = 1
 
 [node name="SpawnArea" parent="BlockComputer" index="0"]
@@ -81,6 +77,9 @@ z_as_relative = false
 
 [node name="Derper" parent="." instance=ExtResource( 4 )]
 position = Vector2( 32, 416 )
+
+[node name="Finish" parent="." instance=ExtResource( 10 )]
+position = Vector2( 88, 98 )
 
 [editable path="BreakLines/BreakLine"]
 [editable path="BreakLines/BreakLine3"]

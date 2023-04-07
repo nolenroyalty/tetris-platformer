@@ -22,8 +22,10 @@ func on_animation_finished():
 		animation.play("idle")
 
 func disable_movement():
+	print("disabling movement")
 	velocity = Vector2.ZERO
 	movement_disabled = true
+	animation.play("computer")
 
 func _physics_process(delta):
 	var x = 0
@@ -79,7 +81,11 @@ func maybe_idle():
 	# We don't want to interupt our landing animation with an idle; if the land animation
 	# finishes we'll automatically move to an idle via a signal.
 	if animation.animation != "land" and is_on_floor():
-		animation.play("idle")
+		if movement_disabled:
+			# it'd be nice to have an "idle at computer" animation
+			pass
+		else:
+			animation.play("idle")
 
 func maybe_run():
 	if is_on_floor():

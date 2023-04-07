@@ -9,7 +9,7 @@ signal derper_hit_player
 var tetrisPiece = preload("res://Piece/Piece.tscn")
 onready var break_lines = $BreakLines
 onready var bloopers = $Bloopers
-onready var door = $Door
+onready var door = $Finish
 onready var derper = $Derper
 onready var block_computer = $BlockComputer
 onready var player = $Player
