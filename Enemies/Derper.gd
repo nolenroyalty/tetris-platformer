@@ -18,7 +18,7 @@ func _ready():
 
 func handle_player_entered(_body):
 	emit_signal("player_entered_derper_hitbox")
-	sprite.play("walk angry")
+#	sprite.play("walk angry")
 
 func _physics_process(_delta):
 	if not is_on_floor():
@@ -35,6 +35,7 @@ func _physics_process(_delta):
 			else:
 				turned_last_time = true
 				direction *= -1
+				sprite.play("walk")
 		else:
 			turned_last_time = false
 

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/landsheet.png-bc759ede71f541c4ca6b5faa0f2603cc.stex"
+path="res://.import/jump.png-cc18309ec5611e093f2319788c6063b9.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Player/Sprites/landsheet.png"
-dest_files=[ "res://.import/landsheet.png-bc759ede71f541c4ca6b5faa0f2603cc.stex" ]
+source_file="res://Player/MySprites/jump.png"
+dest_files=[ "res://.import/jump.png-cc18309ec5611e093f2319788c6063b9.stex" ]
 
 [params]
 

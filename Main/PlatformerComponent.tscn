@@ -19,30 +19,24 @@ script = ExtResource( 3 )
 position = Vector2( 32, 0 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 168, 576 )
-scale = Vector2( 2, 2 )
-MAX_SPEED = 500
-ACCELERATION = 800
-JUMP_SPEED = 400
+position = Vector2( 168, 584 )
+GRAVITY = 1000
+JUMP_SPEED = 450
 
 [node name="PlatformTile" parent="." instance=ExtResource( 2 )]
 z_index = -2
-tile_data = PoolIntArray( 0, 2, 0, 11, 2, 0, 65536, 2, 65536, 65547, 2, 65536, 131072, 2, 65536, 131083, 2, 65536, 196608, 2, 65536, 196619, 2, 65536, 262144, 2, 65537, 262145, 2, 2, 262146, 2, 2, 262147, 2, 2, 262148, 2, 2, 262149, 2, 3, 262155, 2, 65536, 327680, 2, 65537, 327681, 2, 131074, 327682, 2, 131074, 327683, 2, 131074, 327684, 2, 131074, 327685, 2, 131075, 327689, 2, 196609, 327690, 2, 196610, 327691, 2, 65539, 393216, 2, 65536, 393227, 2, 65536, 458752, 2, 65536, 458763, 2, 65536, 524288, 2, 65536, 524295, 2, 196609, 524296, 2, 3, 524299, 2, 65536, 589824, 2, 65536, 589832, 2, 131073, 589833, 2, 196610, 589834, 2, 196610, 589835, 2, 65539, 655360, 2, 65536, 655371, 2, 65536, 720896, 2, 65536, 720907, 2, 65536, 786432, 2, 65536, 786439, 2, 196608, 786443, 2, 65536, 851968, 2, 65536, 851979, 2, 65536, 917504, 2, 65536, 917515, 2, 65536, 983040, 2, 65537, 983041, 2, 196610, 983042, 2, 196611, 983050, 2, 196609, 983051, 2, 65539, 1048576, 2, 65536, 1048587, 2, 65536, 1114112, 2, 65536, 1114119, 2, 196608, 1114123, 2, 65536, 1179648, 2, 65536, 1179659, 2, 65536, 1245184, 2, 65536, 1245195, 2, 65536, 1310720, 2, 131073, 1310721, 2, 196610, 1310722, 2, 196610, 1310723, 2, 196610, 1310724, 2, 196610, 1310725, 2, 196610, 1310726, 2, 196610, 1310727, 2, 196610, 1310728, 2, 196610, 1310729, 2, 196610, 1310730, 2, 196610, 1310731, 2, 131075 )
-
-[node name="Derper" parent="." instance=ExtResource( 4 )]
-position = Vector2( 216, 432 )
-scale = Vector2( 0.5, 0.5 )
+tile_data = PoolIntArray( 0, 3, 0, 11, 3, 0, 65536, 3, 65536, 65547, 3, 65536, 131072, 3, 65536, 131083, 3, 65536, 196608, 3, 65536, 196619, 3, 65536, 262144, 3, 65537, 262145, 3, 2, 262146, 3, 2, 262147, 3, 2, 262148, 3, 2, 262149, 3, 3, 262155, 3, 65536, 327680, 3, 65537, 327681, 3, 131074, 327682, 3, 131074, 327683, 3, 131074, 327684, 3, 131074, 327685, 3, 131075, 327689, 3, 196609, 327690, 3, 196610, 327691, 3, 65539, 393216, 3, 65536, 393227, 3, 65536, 458752, 3, 65536, 458763, 3, 65536, 524288, 3, 65536, 524295, 3, 196609, 524296, 3, 3, 524299, 3, 65536, 589824, 3, 65536, 589832, 3, 131073, 589833, 3, 196610, 589834, 3, 196610, 589835, 3, 65539, 655360, 3, 65536, 655371, 3, 65536, 720896, 3, 65536, 720907, 3, 65536, 786432, 3, 65536, 786439, 3, 196608, 786443, 3, 65536, 851968, 3, 65536, 851979, 3, 65536, 917504, 3, 65536, 917515, 3, 65536, 983040, 3, 65537, 983041, 3, 196610, 983042, 3, 196610, 983043, 3, 196611, 983049, 3, 196609, 983050, 3, 196610, 983051, 3, 65539, 1048576, 3, 65536, 1048587, 3, 65536, 1114112, 3, 65536, 1114119, 3, 196608, 1114123, 3, 65536, 1179648, 3, 65536, 1179659, 3, 65536, 1245184, 3, 65536, 1245195, 3, 65536, 1310720, 3, 131073, 1310721, 3, 196610, 1310722, 3, 196610, 1310723, 3, 196610, 1310724, 3, 196610, 1310725, 3, 196610, 1310726, 3, 196610, 1310727, 3, 196610, 1310728, 3, 196610, 1310729, 3, 196610, 1310730, 3, 196610, 1310731, 3, 131075 )
 
 [node name="BreakLines" type="Node2D" parent="."]
+z_index = -1
 script = ExtResource( 7 )
 
 [node name="BreakLine" parent="BreakLines" instance=ExtResource( 6 )]
-position = Vector2( 64, 480 )
+position = Vector2( 128, 480 )
 BLOCK_ROW_INDEX = 15
 
 [node name="TextureRect" parent="BreakLines/BreakLine" index="0"]
-margin_left = 32.0
-margin_right = 288.0
+margin_right = 160.0
 
 [node name="BreakLine2" parent="BreakLines" instance=ExtResource( 6 )]
 position = Vector2( 32, 224 )
@@ -51,9 +45,6 @@ BLOCK_ROW_INDEX = 7
 [node name="BreakLine3" parent="BreakLines" instance=ExtResource( 6 )]
 position = Vector2( 32, 608 )
 BLOCK_ROW_INDEX = 19
-
-[node name="TextureRect" parent="BreakLines/BreakLine3" index="0"]
-margin_right = 288.0
 
 [node name="Bloopers" type="Node2D" parent="."]
 script = ExtResource( 8 )
@@ -65,11 +56,11 @@ position = Vector2( 320, 608 )
 SWITCH_INDEX = 19
 
 [node name="TNTSwitch2" parent="TNT" instance=ExtResource( 5 )]
-position = Vector2( 288, 256 )
+position = Vector2( 304, 256 )
 SWITCH_INDEX = 19
 
 [node name="TNTSwitch3" parent="TNT" instance=ExtResource( 5 )]
-position = Vector2( 320, 128 )
+position = Vector2( 304, 128 )
 SWITCH_INDEX = 19
 
 [node name="Door" parent="." instance=ExtResource( 10 )]
@@ -87,6 +78,9 @@ z_as_relative = false
 
 [node name="Computer" parent="BlockComputer" index="1"]
 z_as_relative = false
+
+[node name="Derper" parent="." instance=ExtResource( 4 )]
+position = Vector2( 32, 416 )
 
 [editable path="BreakLines/BreakLine"]
 [editable path="BreakLines/BreakLine3"]

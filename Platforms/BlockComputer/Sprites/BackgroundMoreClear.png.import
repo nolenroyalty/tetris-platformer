@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/walksheet.png-5972d154734b0bbe37d0822b54d8d58c.stex"
+path="res://.import/BackgroundMoreClear.png-2211994f21ea4bb04d4a12d981e2184e.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Player/Sprites/walksheet.png"
-dest_files=[ "res://.import/walksheet.png-5972d154734b0bbe37d0822b54d8d58c.stex" ]
+source_file="res://Platforms/BlockComputer/Sprites/BackgroundMoreClear.png"
+dest_files=[ "res://.import/BackgroundMoreClear.png-2211994f21ea4bb04d4a12d981e2184e.stex" ]
 
 [params]
 

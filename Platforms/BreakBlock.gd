@@ -22,7 +22,7 @@ func rotate_sprite(d):
 	blockSprite.rotation_degrees = d
 
 func set_left_sprite():
-	blockSprite.frame = 1
+	blockSprite.frame = 0
 
 func set_right_sprite():
 	blockSprite.frame = 2

@@ -1,8 +1,8 @@
 extends KinematicBody2D
 
 onready var animation = $Animation
-export var MAX_SPEED = 400
-export var ACCELERATION = 800
+export var MAX_SPEED = 250
+export var ACCELERATION = 450
 export var FRICTION = 2000
 export var GRAVITY = 800
 export var MAX_GRAVITY = 1200

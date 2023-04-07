@@ -49,6 +49,7 @@ Constants="*res://Constants/Constants.tscn"
 [display]
 
 window/size/height=800
+window/dpi/allow_hidpi=true
 
 [global]
 

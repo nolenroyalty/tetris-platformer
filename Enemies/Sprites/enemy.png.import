@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/runsheet.png-91fc4808ac4413befd3fa63546a89d4a.stex"
+path="res://.import/enemy.png-308e20375ecd0fc9980e591136b1370a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Player/Sprites/runsheet.png"
-dest_files=[ "res://.import/runsheet.png-91fc4808ac4413befd3fa63546a89d4a.stex" ]
+source_file="res://Enemies/Sprites/enemy.png"
+dest_files=[ "res://.import/enemy.png-308e20375ecd0fc9980e591136b1370a.stex" ]
 
 [params]
 

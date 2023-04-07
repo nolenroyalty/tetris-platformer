@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/switchon.png-e6813a7600c2cd0f64623c6d91d6bece.stex"
+path="res://.import/computer.png-7f9cd6f76cf365f6c5914d56896f2c41.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Platforms/Sprites/switchon.png"
-dest_files=[ "res://.import/switchon.png-e6813a7600c2cd0f64623c6d91d6bece.stex" ]
+source_file="res://Player/MySprites/computer.png"
+dest_files=[ "res://.import/computer.png-7f9cd6f76cf365f6c5914d56896f2c41.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

@@ -21,7 +21,7 @@ func handle_dropped_piece(piece):
 	platformer.add_to_bloopers(piece)
 	camera.drop_shake()
 
-func handle_derper_hit_player(): end_game("KILLED BY DERPER :(")
+func handle_derper_hit_player(): end_game("KILLED BY DOUG PATTI :(")
 
 func handle_rows_cleared(rows):
 	for row in rows: 

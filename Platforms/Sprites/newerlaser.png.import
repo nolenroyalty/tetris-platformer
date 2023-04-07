@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/idlesheet.png-6132dc65d72b8762a1fbb9978ed6b474.stex"
+path="res://.import/newerlaser.png-b3fbe948340a35f675d148b6ad79272d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Player/Sprites/idlesheet.png"
-dest_files=[ "res://.import/idlesheet.png-6132dc65d72b8762a1fbb9978ed6b474.stex" ]
+source_file="res://Platforms/Sprites/newerlaser.png"
+dest_files=[ "res://.import/newerlaser.png-b3fbe948340a35f675d148b6ad79272d.stex" ]
 
 [params]
 
