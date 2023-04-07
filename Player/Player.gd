@@ -7,7 +7,7 @@ export var FRICTION = 2000
 export var GRAVITY = 800
 export var MAX_GRAVITY = 1200
 export var JUMP_SPEED = 100
-export var HORIZONTAL_PENALTY_IN_THE_AIR = 0.45
+export var HORIZONTAL_PENALTY_IN_THE_AIR = 0.50
 
 var velocity = Vector2()
 var just_hit_floor = false

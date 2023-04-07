@@ -19,7 +19,7 @@ script = ExtResource( 3 )
 position = Vector2( 32, 0 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 168, 584 )
+position = Vector2( 132, 590 )
 GRAVITY = 1000
 JUMP_SPEED = 450
 
@@ -32,19 +32,25 @@ z_index = -1
 script = ExtResource( 7 )
 
 [node name="BreakLine" parent="BreakLines" instance=ExtResource( 6 )]
-position = Vector2( 128, 480 )
+position = Vector2( -96, 480 )
 BLOCK_ROW_INDEX = 15
 
 [node name="TextureRect" parent="BreakLines/BreakLine" index="0"]
-margin_right = 160.0
+margin_right = 384.0
 
 [node name="BreakLine2" parent="BreakLines" instance=ExtResource( 6 )]
-position = Vector2( 32, 224 )
+position = Vector2( -96, 224 )
 BLOCK_ROW_INDEX = 7
 
+[node name="TextureRect" parent="BreakLines/BreakLine2" index="0"]
+margin_right = 448.0
+
 [node name="BreakLine3" parent="BreakLines" instance=ExtResource( 6 )]
-position = Vector2( 32, 608 )
+position = Vector2( -96, 616 )
 BLOCK_ROW_INDEX = 19
+
+[node name="TextureRect" parent="BreakLines/BreakLine3" index="0"]
+margin_right = 448.0
 
 [node name="Bloopers" type="Node2D" parent="."]
 script = ExtResource( 8 )
@@ -79,8 +85,10 @@ z_as_relative = false
 position = Vector2( 32, 416 )
 
 [node name="Finish" parent="." instance=ExtResource( 10 )]
-position = Vector2( 88, 98 )
+position = Vector2( 96, 98 )
+z_index = -1
 
 [editable path="BreakLines/BreakLine"]
+[editable path="BreakLines/BreakLine2"]
 [editable path="BreakLines/BreakLine3"]
 [editable path="BlockComputer"]
