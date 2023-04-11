@@ -10,21 +10,9 @@ export_presets.cfg
 *.translation
 
 # Mono-specific ignores
-.mono/
+.mono/*
 data_*/
 mono_crash.*.json
-Export/index.html
-Export/platris.apple-touch-icon.png
-Export/platris.apple-touch-icon.png.import
-Export/platris.audio.worklet.js
-Export/platris.icon.png
-Export/platris.icon.png.import
-Export/platris.js
-Export/platris.pck
-Export/platris.png
-Export/platris.png.import
-Export/platris.wasm
-.mono/metadata/ide_messaging_meta.txt
-platris-3.zip
-.mono/metadata/ide_messaging_meta.txt
+Export/*
+Zips/*
 .mono/metadata/ide_messaging_meta.txt
